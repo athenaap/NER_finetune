@@ -11,6 +11,8 @@ Another notable gap in the literature is the limited attention paid to methods t
 
 Here I present a pre-trained model for recognizing named entities in Azerbaijani text, supporting 25+ entity types including persons, locations, organizations, dates, and more.
 
+Dataset that was used in this task ---> https://huggingface.co/datasets/LocalDoc/azerbaijani-ner-dataset 
+
 ## Installation
 
 ```bash
