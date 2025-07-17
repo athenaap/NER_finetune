@@ -1,27 +1,26 @@
 # Azerbaijani Named Entity Recognition (NER) Model
 
-![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+Research:
 
-A pre-trained model for recognizing named entities in Azerbaijani text, supporting 25+ entity types including persons, locations, organizations, dates, and more.
+Named Entity Recognition (NER) is a subfield of computer science and Natural Language Processing (NLP) that focuses on identifying and classifying entities in unstructured text into predefined categories, such as persons, geographical locations, and organizations.
+This information helps to analyze and process texts, giving capability to derive meaning from sentences. NER is utilized in lots of domains such as media, search engines and content recommendations. 
 
-## 📦 Installation
+Historically, early NER systems relied on rule-based approaches with hand-crafted rules, lexicons, and spelling features. These methods, while simple and interpretable, lacked flexibility and scalability. The introduction of machine learning techniques marked a significant shift in the field, allowing more adaptable and data-driven approaches. With the rise of neural networks, NER systems further improved, particularly with the adoption of deep learning methods, which enabled more sophisticated models capable of capturing complex patterns in text. Most recently, Transformer-based architectures have set new standards in NER performance, leading to breakthroughs in the field. 
+
+Another notable gap in the literature is the limited attention paid to methods that address low-resource settings, where annotated data is scarce. Producing annotated datasets is often expensive and time consuming, making it essential to develop methods that can perform effectively with limited data.
+
+Here I present a pre-trained model for recognizing named entities in Azerbaijani text, supporting 25+ entity types including persons, locations, organizations, dates, and more.
+
+## Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/azerbaijani-ner.git
-cd azerbaijani-ner
+git clone https://github.com/athenaap/NER_finetune
 
 # Install dependencies
 pip install -r requirements.txt
 ```
 
-For GPU support (recommended):
-```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-```
-
-## 🚀 Quick Start
 
 ### Using the Command Line
 
@@ -45,20 +44,34 @@ model = NERPredictor()  # Automatically downloads model
 results = model.predict("İlham Əliyev 2025-ci ildə Gəncədə görüş keçirəcək")
 ```
 
-## 📊 Supported Entity Types
+## Supported Entity Types
 
-| Entity Type       | Example                |
-|-------------------|------------------------|
-| PERSON           | İlham Əliyev          |
-| LOCATION         | Bakı, Xəzər dənizi    |
-| ORGANIZATION     | Apple Inc.            |
-| DATE             | 2024-cü ilin martı    |
-| MONEY            | 1 milyon dollar       |
-| ...              | ...                   |
+0: O: Outside any named entity
+1: PERSON: Names of individuals
+2: LOCATION: Geographical locations, both man-made and natural
+3: ORGANISATION: Names of companies, institutions
+4: DATE: Dates or periods
+5: TIME: Times of the day
+6: MONEY: Monetary values
+7: PERCENTAGE: Percentage values
+8: FACILITY: Buildings, airports, etc.
+9: PRODUCT: Products and goods
+10: EVENT: Events and occurrences
+11: ART: Artworks, titles of books, songs
+12: LAW: Legal documents
+13: LANGUAGE: Languages
+14: GPE: Countries, cities, states
+15: NORP: Nationalities or religious or political groups
+16: ORDINAL: Ordinal numbers
+17: CARDINAL: Cardinal numbers
+18: DISEASE: Diseases and medical conditions
+19: CONTACT: Contact information, e.g., phone numbers, emails
+20: ADAGE: Proverbs, sayings
+21: QUANTITY: Measurements and quantities
+22: MISCELLANEOUS: Miscellaneous entities
+23: POSITION: Professional or social positions
+24: PROJECT: Names of projects or programs
 
-*(Full list available in [model_card.md](model_card.md))*
-
-## 🛠️ Advanced Usage
 
 ### Download Model Manually
 
@@ -67,55 +80,6 @@ from kagglehub import model_download
 model_path = model_download("afinaapayeva/ner_tuned_az/pyTorch/default")
 ```
 
-### API Server
 
-```bash
-uvicorn api:app --reload
-```
 
-Then send POST requests to:
-```bash
-curl -X POST http://127.0.0.1:8000/predict \
-  -H "Content-Type: application/json" \
-  -d '{"text":"Nobel mükafatı 2025-ci ildə təqdim olunacaq"}'
-```
-
-## 📈 Performance
-
-| Metric     | Score |
-|------------|-------|
-| Precision  | 0.92  |
-| Recall     | 0.89  |
-| F1         | 0.90  |
-
-![Confusion Matrix](assets/confusion_matrix.png)
-
-## 📂 Project Structure
-
-```
-.
-├── main.py             # Main CLI interface
-├── ner_predictor.py    # Core model class
-├── requirements.txt    # Dependencies
-├── api.py              # FastAPI endpoint
-└── data/
-    ├── train.json      # Sample training data
-    └── test.json       # Evaluation data
-```
-
-## 🤝 Contributing
-
-1. Fork the project
-2. Create your branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## ✉️ Contact
-
-Afina Apayeva - afina@example.com  
 
