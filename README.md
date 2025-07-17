@@ -16,6 +16,7 @@ Here I present a pre-trained model for recognizing named entities in Azerbaijani
 ```bash
 # Clone the repository
 git clone https://github.com/athenaap/NER_finetune
+cd NER_finetune
 
 # Install dependencies
 pip install -r requirements.txt
